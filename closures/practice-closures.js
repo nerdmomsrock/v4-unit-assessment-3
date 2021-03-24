@@ -1,24 +1,28 @@
-  ////////////PROBLEM 1////////////
-  
-  /*
+////////////PROBLEM 1////////////
+
+/*
     Write a function called myFunc. 
     Inside the function, we'll create a variable and another function. 
     Call the variable myStr and set it to the string 'super secret string'. 
     Call the function getSecretString and have it return the myStr variable. 
     myFunc should return getSecretString
   */
-  
-  //CODE HERE
 
-  
-  //Now create a variable called secretString. Its value should be the invocation of myFunc.
+//CODE HERE
+function myFunc() {
+  const myStr = "super secret string";
+  return function getSecretString() {
+    return myStr;
+  };
+}
 
-  //CODE HERE
-  
-  
-  ////////////PROBLEM 2////////////
+//Now create a variable called secretString. Its value should be the invocation of myFunc.
 
-  /*
+//CODE HERE
+const secretString = myFunc();
+////////////PROBLEM 2////////////
+
+/*
     Write a function called lightSwitch. It will return an inner function.
     Create a variable inside lightSwitch called isTheLightOn and set its initial value to the boolean false. 
     Write a function called flipTheSwitch inside lightSwitch. 
@@ -27,34 +31,41 @@
     And if the light is off (false), the string should be 'The light is off'. 
     The lightSwitch function should return flipTheSwitch.
   */
-  
-  //CODE HERE
 
-  
-  //Create a variable called kitchenSwitch whose value is the invocation of lightSwitch.
-  
-  //CODE HERE
+//CODE HERE
+function lightSwitch() {
+  var isTheLightOn = false;
+  return function flipTheSwitch() {
+    isTheLightOn = !isTheLightOn;
 
-  
-  //Invoke kitchenSwitch.
+    if (isTheLightOn === true) {
+      return "The light is on";
+    } else {
+      return "The light is off";
+    }
+  };
+}
+//Create a variable called kitchenSwitch whose value is the invocation of lightSwitch.
 
-  //CODE HERE
-  
-  
-  //Create a variable called bathroomSwitch whose value is the invocation of lightSwitch. 
+//CODE HERE
+const kitchenSwitch = lightSwitch();
+//Invoke kitchenSwitch.
+kitchenSwitch();
+//CODE HERE
 
-  //CODE HERE
-  
-  
-  //Invoke bathroomSwitch twice.
-  
-  //CODE HERE
+//Create a variable called bathroomSwitch whose value is the invocation of lightSwitch.
 
-  
-  
-  ////////////PROBLEM 3////////////
+//CODE HERE
+const bathroomSwitch = lightSwitch();
+//Invoke bathroomSwitch twice.
+bathroomSwitch();
+bathroomSwitch();
 
-  /*
+//CODE HERE
+
+////////////PROBLEM 3////////////
+
+/*
     Use the module pattern to create a plant height tracker, name your function 'plantTracker'
     Set up two variables inside plantTracker, 'plant' which should be set to 'fern' and 'height' which should be set to 12
     Return 3 functions using the module pattern
@@ -63,12 +74,27 @@
       - 'prunePlant' should subtract 1 from the height and return the new height
   */
 
-  //CODE HERE
+//CODE HERE
+function plantTracker() {
+  var plant = "fern";
+  var height = 12;
+  return {
+    readInfo: function () {
+      return `This is a ${plant} plant that is ${height} inches tall.`;
+    },
+    waterPlant: function () {
+      height = height + 1;
+      return height;
+    },
+    prunePlant: function () {
+      height = height - 1;
+      return height;
+    },
+  };
+}
+////////////PROBLEM 4////////////
 
-
-  ////////////PROBLEM 4////////////
-
-  /*
+/*
     Use the module pattern to create an inventory, name the function 'inventory'
     Set up a variable inside inventory called 'products' initialized as an empty array.  
     Return 3 functions using the module pattern
@@ -78,19 +104,35 @@
         - hint: try to find the index of the string first
   */
 
-  //CODE HERE
+//CODE HERE
+function inventory() {
+  let products = [];
+  return {
+    readProducts: function () {
+      return products;
+    },
+    addToProducts: function (arg) {
+      return products.push(arg);
+    },
+    deleteFromProducts: function (str) {
+      for (let i = 0; i < products.length; i++) {
+        if (products[i] === str) {
+          return products.splice(i, 1);
+        }
+      }
+    },
+  };
+}
 
-
-  /*
+/*
     Create a variable called 'shoes' whose value is the invocation of inventory.
   */
 
-  //CODE HERE
-
-
-  /*
+//CODE HERE
+let shoes = inventory();
+/*
     Add an item to your shoes array using the addToProducts function
   */
 
-  //CODE HERE
-
+//CODE HERE
+shoes.addToProducts("adidas");
