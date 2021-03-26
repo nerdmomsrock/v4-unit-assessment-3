@@ -1,0 +1,60 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  height: 100vh;
+  background-color: whitesmoke;
+  display: inline-block;
+}
+
+#heading {
+  height: 100px;
+  width: 100vw;
+  margin-top: 0;
+  text-align: center;
+  font-family: fantasy;
+}
+
+.grayBar {
+  height: 10px;
+  background-image: linear-gradient(180deg, lightgray, transparent);
+}
+
+h1 {
+  color: mediumturquoise;
+}
+
+.searchBar {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  height: 25px;
+  width: 100vw;
+}
+
+.main {
+  height: 650px;
+  width: 98%;
+  background-color: darkgray;
+  margin-top: 20px;
+  margin: auto;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.books {
+  height: 99%;
+  width: 59%;
+  background-color: whitesmoke;
+}
