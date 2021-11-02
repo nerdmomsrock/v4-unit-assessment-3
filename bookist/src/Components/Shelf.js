@@ -1,14 +1,22 @@
 import React, { Component } from "react";
 
 class Shelf extends Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
+  showShelf = () => {
+    const mappedShelf = this.props.mappedTitles.map((shelf, i) => {
+      <ul key={i} className="list">
+        <li>{shelf}</li>
+      </ul>;
+    });
+    return mappedShelf;
+  };
+
   render() {
     return (
       <div className="shelf">
-        <div className="shelfDisplay">Shelf</div>
+        {this.showShelf()}
+        <h2>shelf</h2>
+        <button onClick={this.props.clearShelf}>Clear Shelf</button>
+        {/* <div className="shelfDisplay">Shelf</div> */}
       </div>
     );
   }
